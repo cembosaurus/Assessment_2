@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float:left;
+  width:20%;
+  text-align:center;
+}
+.menu a {
+  background-color:#e5e5e5;
+  padding:8px;
+  margin-top:7px;
+  display:block;
+  width:100%;
+  color:black;
+}
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  background-color:#dae6db;
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:7px;
+  text-align:center;
+  overflow: auto;
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:#001b3d;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Responsive page with Resonate Solutions' twitter feed.</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="https://en.wikipedia.org/wiki/Assembly_language">Assembly</a>
+    <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>
+    <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C#</a>
+    <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>
+    <a href="https://en.wikipedia.org/wiki/JavaScript">Javascrip</a>
+    <a href="https://en.wikipedia.org/wiki/SQL">SQL</a>
+    <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>
+    <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>
+  </div>
+
+  <div class="main">
+    <h2>Computer programming.</h2>
+    <p> Computer programming is the process of designing and building an executable computer program for accomplishing a specific computing task. 
+        Programming involves tasks such as: analysis, generating algorithms, profiling algorithms' accuracy and resource consumption, and the implementation of algorithms in a chosen programming language (commonly referred to as coding).
+        The source code of a program is written in one or more languages that are intelligible to programmers, rather than machine code, which is directly executed by the central processing unit. 
+        The purpose of programming is to find a sequence of instructions that will automate the performance of a task (which can be as complex as an operating system) on a computer, often for solving a given problem. 
+        The process of programming thus often requires expertise in several different subjects, including knowledge of the application domain, specialized algorithms, and formal logic.
+        Tasks accompanying and related to programming include: testing, debugging, source code maintenance, implementation of build systems, and management of derived artifacts, such as the machine code of computer programs. 
+        These might be considered part of the programming process, but often the term software development is used for this larger process with the term programming, implementation, or coding reserved for the actual writing of code. 
+        Software engineering combines engineering techniques with software development practices. Reverse engineering is the opposite process. A hacker is any skilled computer expert that uses their technical knowledge to overcome a problem, 
+        but it can also mean a security hacker in common language. </p>
+  </div>
+
+  <div class="right">
+    <h2 style="color: rgb(192, 112, 112);">Resonate feed</h2>
+    <a class="twitter-timeline" href="https://twitter.com/ResonateAU?ref_src=twsrc%5Etfw">Tweets by ResonateAU</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+  </div>
+</div>
+
+<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">20/04/2019</div>
+
+</body>
+</html>
