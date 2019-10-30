@@ -93,59 +93,90 @@ namespace Resonate_Test
             var str2 = Console.ReadLine();
 
             var service100 = new Level_100.Service();
-            Console.WriteLine("\nStrings are{0} permutations of eachother.", service100.Permutation(str1, str2) ? "":"NOT");
+            Console.WriteLine("\nStrings are{0} permutations of eachother.", service100.Permutation(str1, str2) ? "":" NOT");
         }
 
 
         private static void CodeGenerator()
         {
             Console.WriteLine("Insert Store number (1 - 200):");
-            var store = Convert.ToInt32(Console.ReadLine());
+            int store = int.TryParse(Console.ReadLine(), out store) && store.IsBetween(1, 200) ? store : 0;
+            Console.WriteLine("Store number is {0}", store != 0 ? store.ToString() : "out of range.");
+
+
             Console.WriteLine("Insert Year (1990 - 2090):");
-            var year = Convert.ToInt32(Console.ReadLine());
+            int year = int.TryParse(Console.ReadLine(), out year) && year.IsBetween(1990, 2090) ? year : 0;
+            Console.WriteLine("Year is {0}", year != 0 ? year.ToString() : "out of range.");
+
+
             Console.WriteLine("Insert Month:");
-            var month = Convert.ToInt32(Console.ReadLine());
+            int month = int.TryParse(Console.ReadLine(), out month) && month.IsBetween(1, 12) ? month : 0;
+            Console.WriteLine("Month is {0}", month != 0 ? month.ToString() : "out of range.");
+
             Console.WriteLine("Insert Day:");
-            var day = Convert.ToInt32(Console.ReadLine());
+            int day = int.TryParse(Console.ReadLine(), out day) && day.IsBetween(1, 30) ? day : 0;
+            Console.WriteLine("Day is {0}", day != 0 ? day.ToString() : "out of range.");
+
             Console.WriteLine("Insert Customer number (1 - 10000):");
-            var customer = Convert.ToInt32(Console.ReadLine());
+            int customer = int.TryParse(Console.ReadLine(), out customer) && customer.IsBetween(1, 10000) ? customer : 0;
+            Console.WriteLine("Customer's number is {0}", customer != 0 ? customer.ToString() : "out of range.");
 
-            var date = new DateTime(year, month, day);
 
-            var model = new Model()
+            if (VerifyData(store, year, month, customer))
             {
-                Store = store,
-                Date = date,
-                Customer = customer
-            };
 
-            var service = new Level_200.Service(model);
+                var date = new DateTime(year, month, day);
 
-            Console.WriteLine("\n{0}\n"
-                , !service.DataState 
-                ? "Entered data was invalid !" 
-                : ("Generated code is:   " + service.Result.Code));
+                var model = new Model()
+                {
+                    Store = store,
+                    Date = date,
+                    Customer = customer
+                };
 
-            // Code verification:
+                var service = new Level_200.Service(model);
 
-            var userInput = service.Result.Code;
-            model = new Model();
-            model.Code = userInput;
-            service = new Level_200.Service(model);
+                Console.WriteLine("\n{0}\n"
+                    , !service.DataState
+                    ? "Entered data was invalid !"
+                    : ("Generated code is:   " + service.Result.Code));
 
-            if (service.CodeState)
+                // Code verification:
+
+                var userInput = service.Result.Code;
+                model = new Model();
+                model.Code = userInput;
+                service = new Level_200.Service(model);
+
+                if (service.CodeState)
+                {
+                    Console.WriteLine("Press any key for code verification of code: {0}", model.Code);
+                    Console.ReadLine();
+
+                    var data = service.GetData(model);
+
+                    Console.WriteLine(
+                        "Entered store number was: {0}\n" +
+                        "Date of issue was:        {1}\n" +
+                        "Customer number was:      {2}\n"
+                        , data.Store, data.Date.ToShortDateString(), data.Customer
+                        );
+                }
+
+            }
+            else
+                Console.WriteLine("\n\nYou have entered incorect data ! Please try again.\n\n");
+
+            Console.ReadLine();
+
+
+
+            bool VerifyData(params int[] data)
             {
-                Console.WriteLine("Press any key for code verification:");
-                Console.ReadLine();
-
-                var data = service.GetData(model);
-
-                Console.WriteLine(
-                    "Entered store number was: {0}\n" +
-                    "Date of issue was:        {1}\n" +
-                    "Customer number was:      {2}\n"
-                    , data.Store, data.Date.ToShortDateString(), data.Customer
-                    );
+                foreach (int i in data)
+                    if (i == 0)
+                        return false;
+                return true;
             }
         }
 
