@@ -170,7 +170,6 @@ namespace Resonate_Test
             Console.ReadLine();
 
 
-
             bool VerifyData(params int[] data)
             {
                 foreach (int i in data)
