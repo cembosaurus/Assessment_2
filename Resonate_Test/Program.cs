@@ -164,8 +164,7 @@ namespace Resonate_Test
                 }
 
             }
-            else
-                Console.WriteLine("\n\nYou have entered incorect data ! Please try again.\n\n");
+            else Console.WriteLine("\n\nYou have entered incorect data ! Please try again.\n\n");
 
             Console.ReadLine();
 
