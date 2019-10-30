@@ -114,7 +114,7 @@ namespace Resonate_Test
             Console.WriteLine("Month is {0}", month != 0 ? month.ToString() : "out of range.");
 
             Console.WriteLine("Insert Day:");
-            int day = int.TryParse(Console.ReadLine(), out day) && day.IsBetween(1, 30) ? day : 0;
+            int day = int.TryParse(Console.ReadLine(), out day) && day.IsBetween(1, 31) ? day : 0;
             Console.WriteLine("Day is {0}", day != 0 ? day.ToString() : "out of range.");
 
             Console.WriteLine("Insert Customer number (1 - 10000):");
